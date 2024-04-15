@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Scholarly HTML FeE)</title>
+        <link rel="stylesheet" href="css/scholarly.css">
+    </head>
+    <body prefix="schema: http://schema.org">
+        <header>
+            <h1>Scholarly HTML FeE </h1>
+        </header>
+        
+        <div role="contentinfo">
+            <dl>
+              <dt>Authors</dt>
+              <dd>
+                <strong>Corina Samson</strong>
+                și <strong>Ioana Muha</strong></a>
+              </dd>
+            </dl>
+        </div>
+        
+        <section id="structure">
+            <h2><a id="introduction">1. Introduction</a></h2>
+            <section id="Root">
+                <h3>1.1 Purpose</h3>
+                <p>
+                    The purpose of this document is to present a detailed description of the Anonymous Feedback Web Application. 
+                     It will illustrate the purpose and complete declaration for the development of the system.
+                     It will also explain system constraints, interface, and interactions with other external applications.
+                </p>
+            </section>
+            <section>
+                <h3>1.2 Document Conventions</h3>
+                <p>
+                    The document is made with the purpose of documenting the technical means used in the creation of the website.
+                     In the document we will provide information on the architecture used, as well as details on the main functionalities 
+                     and how to implement them. It is suggested that readers of the document have a technical knowledge of the web 
+                     in order to understand the described implementations. For readers interested only in the technical aspects of the product, 
+                     it is recommended to read sections 
+                    <a href="#external-interface-requirements">3</a> and <a href="#system-features">4</a> 
+                    of the current document, while sections <a href="#introduction">1</a> and 
+                    <a href="#overall-description">2</a> are dedicated to the superficial description of the product.
+                </p>
+            </section>
+            <section>
+                <h3>1.3 Intended Audience and Reading Suggestions</h3>
+                <p>
+                    This Software Requirements Specification (SRS) is tailored for a specific audience involved in the operation 
+                    and interaction with the Feedback Collection Tool (FCT). Feedback Providers, the primary users, will find 
+                    relevance in sections detailing the user interface and feedback mechanisms, designed to facilitate an intuitive 
+                    and confidential sharing experience. Feedback Collection Initiators, who orchestrate the feedback campaigns,
+                     are directed towards system features and administrative functionalities that enable the management and curation 
+                     of "things" to be evaluated. Page Administrators will prioritize content on system maintenance, user management, 
+                     and data integrity, with a keen interest in the operational environment that ensures the smooth running of the FCT. 
+                     Specialists and Doctors, responsible for validating responses, will find the reporting and data visualization 
+                     features of particular interest, as these sections elucidate the statistical outcomes and emotional analytics 
+                     derived from user feedback.
+                </p>
+                <p>
+                    The document is structured to usher each user group to the sections most pertinent to their roles. It commences 
+                    with a broad introduction, guiding Feedback Providers to interface layouts and interaction flows. 
+                    Feedback Collection Initiators and Page Administrators are advised to consult the system features and external 
+                    interface requirements that define their administrative capabilities. Specialists and Doctors will benefit from 
+                    the latter parts of the document that elaborate on data analysis and reporting functionalities. The appendices 
+                    provide supplementary material such as a glossary and TBD list, which supports all user groups in understanding 
+                    the terminology and outstanding considerations. It's recommended that each user group begins with the overview 
+                    sections before delving into the details most applicable to their responsibilities within the FCT ecosystem.
+                </p>
+            </section>
+            <section>
+                <h3>1.4 Product Scope</h3>
+                <p>
+                    This application will provide anonymous feedback based on emotions according to the Plutchik model for various 
+                    categories such as events, people, geographical places, products, services, etc.    
+                </p>
+                <p>
+                    Browsing the site allows users to access the posted feedback forms, create new anonymous (optional) ones and be able
+                    to see and download statistics generated by the responses, categorised by specialists.
+                    The generated reports will be available in HTML, CSV and JSON formats.
+                </p> 
+                <p>   
+                    The product is designed, not only for normal users, but also for doctors and admins, making it possible to delete and 
+                    add new forms in order to update and validate the information provided.
+                </p>
+            </section>
+            <section>
+                <h3>1.5 References</h3>
+                <p>
+                    For most pages, we were inspired by the Facebook Application, like the landing page which is the login page, but 
+                    also for the posting feedback forms page. The main page was inspired by the Netflix home page, meaning the forms's 
+                    movable line. The clean design was conceived by us, being influenced by the "white aesthetic" online trend.
+                </p>
+            </section>
+        </section>
+        <section>
+            <h2><a id="overall-description">2. Overall Description</a></h2>
+            <section>
+                <h3>2.1 Product Functions</h3>
+                <p>The web application is tasked with the following core functionalities:</p>
+                <section>
+                    <li>Collection Mechanism: It facilitates the collection of anonymous emotional feedback from users. 
+                        This mechanism is grounded in the Plutchik model of emotions.</li> 
+                    <li>Management Dashboard: This feature enables the initiator of a feedback request to oversee the items that 
+                        are being evaluated. Through this dashboard, initiators can add, modify, or remove items from the list of things.
+                    </li>
+                    <li>
+                        Response Editing: Prior to finalizing the feedback, users have the ability to edit their emotional responses, 
+                        ensuring that the feedback accurately represents their sentiments.
+                    </li>
+                    <li>
+                        Data Compilation: The system will aggregate emotional feedback responses over a designated timeframe and 
+                        categorize them according to the relevant items.
+                    </li>
+                    <li>Statistical Reporting: Post the feedback collection phase, the system will generate statistical reports
+                        reflecting emotional trends and patterns for each item evaluated, factoring in various dimensions such 
+                        as user demographics, temporal aspects, and subcategories of the item.
+                    </li>
+                    <li>
+                        Report Generation: It provides the ability to generate and export these statistics in multiple formats 
+                        such as HTML for web viewing, CSV for spreadsheet analysis, and JSON for data manipulation.
+                    </li>
+                    <li>
+                        Enhanced Data Visualization: As an additional feature, the application will incorporate sophisticated data 
+                        visualization tools to present feedback statistics in a more engaging and informative manner.
+                    </li>
+                </section>
+            </section>
+            <section>
+                <h3>2.2 User Classes and Characteristics</h3>
+                <p>The software application will cater to the following user classes:</p>
+                <section>
+                    <li>
+                        Feedback Initiators: This class consists of individuals or entities that require insights into the reception 
+                        of various 'things'. They utilize the management dashboard extensively for setting up and monitoring feedback 
+                        collection.
+                    </li>
+                    <li>
+                        Anonymous Respondents: Users from diverse backgrounds who provide feedback without revealing their identity. 
+                        The user interface for these participants will prioritize simplicity and clarity in expressing emotions.
+                    </li>
+                    <li>
+                        Administrative Personnel: They are responsible for the maintenance and smooth operation of the web tool. 
+                        Their role involves monitoring the system's health and moderating content as necessary.
+                    </li>
+                    <li>
+                        Data Analysts: This group is focused on the data aspect, interested in obtaining detailed reports and data 
+                        exports for further analysis. They require comprehensive access to the collected data and reporting features.
+                    </li>
+                </section>
+            </section>
+            <section>
+                <h3>2.3 Operating Environment</h3>
+                <p>The operating environment for the web tool encompasses:</p>
+                <section>
+                    <li>
+                        Cross-Platform Accessibility: The software will be accessible via multiple web browsers including Chrome, 
+                        Firefox, Opera, and Edge to ensure wide reach and usability.
+                    </li>
+                    <li>
+                        Server Implementation: It will operate on a custom server setup, likely incorporating a modern web framework 
+                        for backend operations and a robust database system for data storage.
+                    </li>
+                    <li>
+                        Responsive Web Design: The front-end aspect of the tool will be designed to be responsive, allowing for 
+                        seamless interaction across both desktop and mobile devices.
+                    </li>
+                    <li>
+                        API Interaction: All features and data transactions will be interfaced through a REST/GraphQL API, 
+                        ensuring efficient communication between the client-side and server-side components.
+                    </li>
+                    <li>
+                        Data Integration: The tool will integrate with existing data storage and processing services to effectively 
+                        manage the feedback collection and subsequent analytical processes.
+                    </li>
+                </section>
+            </section>
+            <section>
+                <h3>2.4 Assumptions and Dependencies</h3>
+                <section>
+                    <h4>2.4.1 Assumptions</h4>
+                    <section>
+                        <p>
+                            User Behavior Assumption: It is assumed that users will provide honest and genuine feedback in alignment 
+                            with the Plutchik model of emotions. Deviations in user behavior could affect the accuracy and reliability 
+                            of feedback data.
+                        </p>
+                        <p>
+                            Technical Assumptions:
+                                <section>
+                                <li>
+                                    The users will have access to stable internet connections to interact with the web tool.
+                                </li>
+                                <li>
+                                    The users' devices and browsers are up-to-date and capable of supporting modern web standards necessary 
+                                    for the full functionality of the tool.
+                                </li>
+                                </section>
+                        </p>
+                        <p>
+                            Performance Assumption: The tool assumes a certain level of performance from the server that will handle the 
+                            API calls, and that it will be able to manage the expected load without significant delays or downtime.
+                        </p>
+                        <p>
+                            Security Assumption: It is presumed that the measures implemented for anonymizing feedback will be robust 
+                            against attempts to de-anonymize data.
+                        </p>
+                        <p>
+                            Integration Assumption: The software components for data visualization that are to be integrated into the 
+                            tool are assumed to be compatible and will not require extensive modification.
+                        </p>
+                    </section>
+                    <h4>2.4.2 Dependencies</h4>
+                    <section>
+                        <p>
+                            Third-Party Services:
+                            <section>
+                                <li>
+                                    The project is dependent on third-party services for hosting the server and the database.
+                                </li>
+                                <li>
+                                    Dependence on external APIs for some of its data processing and visualization features.
+                                </li>
+                            </section>
+                        </p>
+                        <p>
+                            Software Component Reuse: The project intends to reuse certain software components from previous projects, 
+                            including authentication modules and database schemas.
+                        </p>
+                        <p>
+                            Development Tools: The project’s development relies on the availability and continued support of certain 
+                            development tools and libraries that are currently considered stable and maintained.
+                        </p>
+                        <p>
+                            Browser Dependency: The project depends on the assumption that users will access the tool through browsers 
+                            that comply with web standards used in the development of the tool. Any significant changes in browser 
+                            support or behavior could affect the tool’s functionality.
+                        </p>
+                        <p>
+                            Regulatory Changes: Legal and regulatory changes regarding online anonymity and data protection could impose 
+                            new requirements on the project or restrict certain functionalities.
+                        </p>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section>
+            <h2><a id="external-interface-requirements">3. External Interface Requirements</a></h2>
+            <section>
+                <h3>3.1 User Interfaces</h3>
+                <section>
+                    <h4>3.1.1 Interface Components</h4>
+                    <p>
+                        Interaction with the user will be through the pages that make up the site. In order to meet the necessary 
+                        requirements, we have decided that the web pages implemented will be as follows: login or account creation page, 
+                        home page, description page, account-specific page, statistics page, form creation page, form completion page.
+                    </p>
+                    <p>
+                        The interactions betwwen pages will be described in <a href="#system-features">4</a>.
+                    </p>
+                </section>
+                <section>
+                    <h4>3.1.2 Components Characteristics</h4>
+                    <p>
+                        At the level of visual features, in this section we explain the choices made at the level of the colour scheme, 
+                        placement of elements on the page and font.
+                    </p>
+                    <p>
+                        The colour scheme consists of shades of blue, with light grey tones chosen to combine the main features of the 
+                        product the site serves, namely statistical elements (blue) and feedback forms (grey).
+                    </p>
+                    <p>
+                        The elements are placed in the web pages in a column, navigating the pages by scrolling. The menu is made at 
+                        the top of the page to be easily accessible. The texts are accompanied by images suggestive of the content of 
+                        each paragraph. Paragraphs do not span the full width of the page for ease of use. readable and to give the 
+                        user an overview. 
+                    </p>
+                    <p>
+                        The fonts are chosen to avoid unnecessary page load and to keep a casual and friendly in page navigation.
+                    </p>
+                </section>
+            </section>
+            <section>
+                <h3>3.2 Hardware Interfaces</h3>
+                <p>
+                    The web tool is predominantly dependent on two categories of hardware components for its operation: the web server 
+                    and the user’s device. The server is tasked with hosting the application, storing, and managing the database which 
+                    contains all the information pertinent to the feedback items and the collected responses. It handles the processing 
+                    of user requests and serves the web pages that display the information in a user-friendly format. Communication 
+                    between the client and the server is facilitated via the HTTP/HTTPS protocol, ensuring a standard and secure 
+                    exchange of data. On the client side, any device equipped with a modern web browser, including but not limited to 
+                    desktops, laptops, tablets, and smartphones, is capable of accessing the web tool. This ensures that users can 
+                    provide feedback from virtually any location and device, given that they have internet access.
+                </p>
+            </section>
+            <section>
+                <h3>3.3 Software Interfaces</h3>
+                <section>
+                    <h4>3.3.1 Search engine</h4>
+                    <p>
+                        In terms of software technologies, the product is designed for the most used search engines such as Chrome, 
+                        Opera, Mozilla or Edge and will use their services to access the website and to communicate with the server 
+                        using the HTTP protocol.  
+                    </p>
+                </section>
+                <section>
+                    <h4>3.3.2 Server</h4>
+                    <p>
+                        The server implementation is done using Javascript as programming language, being a proprietary implementation
+                        implementation. Its role is to access the database in order to complete the accessed web pages with the 
+                        information required information. The web pages will be available in template format. The specific fields of 
+                        each template are filled in with data received from the server and then loaded into the browser for the user 
+                        to view.
+                    </p>
+                </section>
+                <section>
+                    <h4>3.3.3 Database</h4>
+                    <p>
+                        The database used is Oracle Database. It will contain a table with available information as well as tags that 
+                        can be applied at the time of filtering, specific to each feedback form (category). In addition to this table, 
+                        there is also a table with information about the details of each form (title, description, data collection 
+                        period, anonymity, owner, etc.), a table containing the validation of responses, a table of forms, a table with 
+                        responses to forms and a table with encrypted information related to user login data.
+                    </p>
+                </section>
+            </section>
+            <section>
+                <h3>3.4 Communications Interfaces</h3>
+                <p>
+                    The HTTP protocol is the basis of communication between the site and the server. The search engine sends 
+                    "HTTP Request" calls to the server, and receives "HTTP Response" signals from the server.
+                </p>
+                <p>
+                    Customer requests can be requests for information from the database (e.g. statistics related to form responses), 
+                    or requests to write information to the database (e.g. registration of new users or forms in the database).
+                </p>
+                <p>
+                    The server response consists of a set of data read from the database and sent to the page that made the request 
+                    for display. These data sets are strings and contain information about the requested fields in the forms or the
+                     addresses of the pictures displayed on the web pages.
+                </p>
+            </section>
+        </section>
+        <section>
+            <h2><a id="system-features">4. System Features</a></h2>
+            <section>
+                <h3>4.1 Anonymous Feedback Submission</h3>
+                <section>
+                    <h4>4.1.1 Description and Priority</h4>
+                    <p>
+                        This feature allows users to anonymously submit feedback for a specific item using the Plutchik model of 
+                        emotions. This is a high priority feature, as it is essential to the core functionality of the product. 
+                        The priority components for this feature could be rated as follows:
+                        <li>
+                            Benefit: 9 (critical to user engagement and data collection)
+                        </li>
+                        <li>
+                            Penalty: 8 (failure to execute this feature undermines the tool's purpose)
+                        </li>
+                        <li>
+                            Cost: 5 (moderate investment in secure and user-friendly design)
+                        </li>
+                        <li>
+                            Risk: 4 (potential risks in handling emotional data securely)
+                        </li>
+                    </p>
+                    <h4>4.1.2 Stimulus/Response Sequences</h4>
+                    <p>
+                        <li>
+                            User Action: User selects an item to provide feedback on.
+                        </li>
+                        <li>
+                            System Response: The system presents a feedback form based on the Plutchik model.
+                        </li>
+                        <li>
+                            User Action: User submits their emotional feedback.
+                        </li>
+                        <li>
+                            System Response: The system confirms receipt and stores the feedback anonymously.
+                        </li>
+                    </p>
+                    <h4>4.1.3 Functional Requirements</h4>
+                    <p>
+                        <li>
+                            System must present a list of items eligible for feedback.
+                        </li>
+                        <li>
+                            Feedback form can be submitted anonymously, without storing any user identifiable information.
+                        </li>
+                        <li>
+                            The system must frame the feedback in a category from the Plutchik wheel.
+                        </li>
+                        <li>
+                            System must confirm the successful submission of feedback.
+                        </li>
+                        <li>
+                            System must handle errors such as network issues or invalid input gracefully, providing clear error messages 
+                            to the user.
+                        </li>
+                    </p>
+                </section>
+
+                <h3>4.2 Feedback Management and Reporting</h3>
+                <section>
+                    <h4>4.2.1 Description and Priority</h4>
+                    <p>
+                        This feature involves the management of feedback items and the generation of reports based on collected data. 
+                        It holds a high priority as it enables the feedback initiators to analyze and interpret the emotional data 
+                        effectively. Priority components are as follows:
+                        <li>
+                            Benefit: 9 (provides critical insights for feedback initiators)
+                        </li>
+                        <li>
+                            Penalty: 7 (lack of effective reporting capabilities could reduce usability)
+                        </li>
+                        <li>
+                            Cost: 6 (requires robust backend development)
+                        </li>
+                        <li>
+                            Risk: 3 (low risk as it primarily deals with data already collected)
+                        </li>
+                    </p>
+                    <h4>4.2.2 Stimulus/Response Sequences</h4>
+                    <p>
+                        <li>
+                            User Action: Feedback initiator logs into the management dashboard.
+                        </li>
+                        <li>
+                            System Response: The system displays current feedback items and any associated reports.
+                        </li>
+                        <li>
+                            User Action: Initiator requests a report based on specific criteria (time period, emotion, etc.).
+                        </li>
+                        <li>
+                            System Response: The system generates and displays the report.
+                        </li>
+                    </p>
+                    <h4>4.2.3 Functional Requirements</h4>
+                    <p>
+                        <li>
+                            System must allow initiators to view and manage feedback items.
+                        </li>
+                        <li>
+                            System must support the generation of reports in HTML, CSV, and JSON formats.
+                        </li>
+                        <li>
+                            Reports must be able to categorize and display data according to multiple criteria (user group, time period,
+                             etc.).
+                        </li>
+                        <li>
+                            System must ensure data privacy and security in report generation and data handling.
+                        </li>
+                        <li>
+                            System must provide the ability to customize report parameters to fit different analytical needs.
+                        </li>
+                    </p>
+                </section>
+                
+                <h3>4.3 User Account Management</h3>
+                <section>
+                    <h4>4.3.1 Description and Priority</h4>
+                    <p>
+                        This feature enables the management of user accounts for feedback initiators and administrative users. It is 
+                        considered a medium priority feature, essential for user authentication and role management. Priority components
+                         are as follows:
+                        <li>
+                            Benefit: 7 (ensures secure access and user-specific functionalities)
+                        </li>
+                        <li>
+                            Penalty: 6 (lack of robust account management could compromise system security)
+                        </li>
+                        <li>
+                            Cost: 4 (standard implementation with common security practices)
+                        </li>
+                        <li>
+                            Risk: 5 (risks associated with data breaches and unauthorized access)
+                        </li>
+                    </p>
+                    <h4>4.3.2 Stimulus/Response Sequences</h4>
+                    <p>
+                        <li>
+                            User Action: User registers or logs into their account.
+                        </li>
+                        <li>
+                            System Response: The system validates credentials and grants access based on user roles.
+                        </li>
+                        <li>
+                            User Action: User updates account settings or logs out.
+                        </li>
+                        <li>
+                            System Response: The system processes the changes or ends the session securely.
+                        </li>
+                    </p>
+                    <h4>4.3.3 Functional Requirements</h4>
+                    <p>
+                        <li>
+                            System must allow new users to register and existing users to log in.
+                        </li>
+                        <li>
+                            System must authenticate users and manage session lifetimes.
+                        </li>
+                        <li>
+                            System must provide role-based access control for different functionalities.
+                        </li>
+                        <li>
+                            System must allow users to update their profile information securely.
+                        </li>
+                        <li>
+                            System must log all access and changes for security auditing purposes.
+                        </li>
+                    </p>
+                </section>
+                
+                <h3>4.4 Data Security and Privacy</h3>
+                <section>
+                    <h4>4.4.1 Description and Priority</h4>
+                    <p>
+                        This feature ensures that all data, especially sensitive feedback data, is handled and stored securely, 
+                        maintaining user anonymity. It is a high priority due to its critical role in complying with privacy laws and 
+                        maintaining user trust. Priority components are as follows:
+                        <li>
+                            Benefit: 9 (crucial for legal compliance and user confidence)
+                        </li>
+                        <li>
+                            Penalty: 9 (failure to secure data could result in severe legal and reputational damage)
+                        </li>
+                        <li>
+                            Cost: 7 (requires investment in secure infrastructure and practices)
+                        </li>
+                        <li>
+                            Risk: 8 (high risk due to potential threats and vulnerabilities)
+                        </li>
+                    </p>
+                    <h4>4.4.2 Stimulus/Response Sequences</h4>
+                    <p>
+                        <li>
+                            User Action: User submits feedback.
+                        </li>
+                        <li>
+                            System Response: The system anonymizes and encrypts the data before storage.
+                        </li>
+                        <li>
+                            User Action: Administrator accesses the data for reporting.
+                        </li>
+                        <li>
+                            System Response: The system ensures that access is logged and the data remains anonymized.
+                        </li>
+                    </p>
+                    <h4>4.4.3 Functional Requirements</h4>
+                    <p>
+                        <li>
+                            All user data must be anonymized at the point of entry.
+                        </li>
+                        <li>
+                            Data must be encrypted both in transit and at rest.
+                        </li>
+                        <li>
+                            System must implement regular security audits and vulnerability assessments.
+                        </li>
+                        <li>
+                            Access to sensitive data must be strictly controlled and monitored.
+                        </li>
+                        <li>
+                            System must comply with relevant data protection regulations.
+                        </li>
+                    </p>
+                </section>
+            
+            </section>
+        </section>
+
+    </body>
+</html>
