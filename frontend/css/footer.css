@@ -1,0 +1,33 @@
+.site-footer {
+	background-color: hsla(0, 0%, 100%, 0.553);
+	padding: 10px 0px;
+	bottom: 0px;
+	width: 100%;
+}
+
+.site-footer h3 {
+	color: var(--zaffre);
+}
+
+.contact-method {
+	color: var(--zaffre);
+}
+
+.footer-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+	.footer-container {
+		max-width: 1024px;
+		margin: auto;
+	}
+
+	.footer-container {
+		font-size: small;
+	}
+}

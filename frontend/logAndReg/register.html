@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Register</title>
+		<link rel="stylesheet" href="./logAndReg.css" />
+	</head>
+	<body>
+		<nav class="navbar">
+			<div class="navbar-logo-container">
+				<img src="../images/logo.png" alt="logo" class="navbar-logo" />
+			</div>
+
+			<ul class="menu">
+				<li><a href="../aboutPage/about.html">About Us</a></li>
+			</ul>
+		</nav>
+		<div class="container">
+			<div class="login-container">
+				<form id="login-form" class="login-form">
+					<h2>Register</h2>
+					<div class="form-group">
+						<label for="firstName"> First Name:</label>
+						<input
+							type="text"
+							name="firstName"
+							id="firstName"
+							placeholder="Ana"
+							autocomplete="on"
+							required
+							autofocus
+						/>
+					</div>
+					<div class="form-group">
+						<label for="lastName"> Last Name:</label>
+						<input
+							type="text"
+							name="lastName"
+							id="lastName"
+							placeholder="Popescu"
+							autocomplete="on"
+							required
+						/>
+					</div>
+					<div class="form-group">
+						<label for="email">Email:</label>
+						<input
+							type="email"
+							id="email"
+							name="email"
+							placeholder="eg:ana.popescu@gmail.com"
+							autocomplete="on"
+							required
+						/>
+					</div>
+					<div class="form-group">
+						<label for="password">Password:</label>
+						<input
+							type="password"
+							id="password"
+							name="password"
+							required
+						/>
+					</div>
+					<div class="form-group">
+						<label for="password">Confirm password:</label>
+						<input
+							type="password"
+							id="password"
+							name="password"
+							required
+						/>
+					</div>
+					<div class="button-div">
+						<a href="../mainPage/main.html" class="button-form"
+							>Register</a
+						>
+					</div>
+					<p>
+						Already have an account? <a href="../index.html">Login</a>
+					</p>
+				</form>
+			</div>
+			<div class="logo-container">
+				<!-- You can put your logo here -->
+				<!-- For now, let's use a placeholder text -->
+
+				<img src="../images/logo.png" alt="Logo" class="brand-logo" />
+			</div>
+		</div>
+	</body>
+</html>

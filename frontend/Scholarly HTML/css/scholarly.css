@@ -1,0 +1,64 @@
+@font-face {
+    font-family: 'Roboto-Light';
+    font-style: normal;
+    src: url('../fonts/Roboto-Light.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto-Italic';
+    font-style: italic;
+    src: url('../fonts/Roboto-Italic.ttf');
+}
+
+body {
+    max-width: 80ch;
+    margin: auto;
+    line-height: 1.6;
+    font-weight: 300;
+    font-family: Roboto-Light, sans-serif;
+}
+
+header > h1 {
+    margin: 0;
+    font-size: 3em;
+    padding-top: 2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    letter-spacing: 0.0375em;
+}
+  
+h1, h2 {
+    color: #4b0061;
+  }
+  
+h2 {
+    margin-top: 3em;
+}
+
+h3 {
+    margin-top: 2.5em;
+}
+
+h4 {
+    font-weight: 300;
+    font-size: 1.2em;
+    margin: 2em 0 0.5em 0;
+}
+
+
+[role="contentinfo"] a{
+    text-decoration: none;
+}
+[role="contentinfo"] dt {
+    font-weight: bold;
+}
+[role="contentinfo"] dd {
+    margin-bottom: 1em;
+}
+
+@media screen and (max-width: 980px) {
+    body {
+      margin: 0 2em;
+    }
+}
