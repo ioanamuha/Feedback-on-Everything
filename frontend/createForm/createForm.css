@@ -81,6 +81,7 @@ input[type="tel"] {
 	margin-bottom: 20px;
 	border: 1px solid #ccc;
 }
+
 input[type="month"],
 .form-category {
 	width: 200px;
@@ -90,11 +91,19 @@ input[type="month"],
 	border: 1px solid #ccc;
 }
 
+.form-category {
+	width: auto;
+	overflow-y:scroll;
+	max-height: 50px;
+
+}
+
 input[type="file"] {
 	padding: 10px;
 	margin: 10px;
 	margin-bottom: 20px;
 }
+
 .input-description {
 	width: calc(100% - 40px);
 	padding: 10px;
@@ -102,6 +111,7 @@ input[type="file"] {
 	margin-bottom: 20px;
 	border: 1px solid #ccc;
 }
+
 .create-form-button {
 	background-color: var(--zaffre);
 	color: var(--honeydew);
@@ -114,10 +124,12 @@ input[type="file"] {
 	height: auto;
 	margin: 20px;
 }
-.create-form-button > a {
+
+.create-form-button>a {
 	text-decoration: none;
 	color: var(--honeydew);
 }
+
 .form-group {
 	display: flex;
 	flex-direction: column;
@@ -130,9 +142,11 @@ input[type="file"] {
 	flex-direction: row;
 	gap: 3rem;
 }
+
 /* CREATE FORM - END */
 
 @media screen and (max-width: 1024px) {
+
 	.card-container,
 	.content-container {
 		max-width: 1024px;
