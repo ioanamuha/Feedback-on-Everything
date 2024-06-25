@@ -1,0 +1,79 @@
+:root {
+	--licorice: #191516ff;
+	--columbia-blue: #6eabd7;
+	--zaffre: #022754;
+	--melon: #e0afa0ff;
+	--honeydew: #c0d5e8;
+}
+
+body,
+html {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	font-family: Arial, sans-serif;
+}
+
+body {
+	background-image: url("../images/aestetic.png");
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
+}
+
+/* Main section */
+.main-section {
+	display: flex;
+	flex-direction: row;
+	width: 80%;
+	margin: auto;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+}
+
+.details-container {
+	background: hsla(0, 0%, 100%, 0.667);
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	padding: 2rem;
+	width: 60%;
+	margin: auto;
+	min-height: 40%;
+	display: flex;
+	align-items: center;
+}
+
+.details-container h2 {
+	font-size: x-large;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.logo-container {
+	width: 40%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.brand-logo {
+	width: 100%;
+	margin: auto;
+	max-width: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+	.details-container h2 {
+		font-size: small;
+	}
+
+	.main-section {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+}

@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Setări Cont Utilizator</title>
 		<link rel="stylesheet" href="./account.css" />
+		<script src="./account.js" type="module" defer></script>
 	</head>
 
 	<body>
@@ -27,19 +28,16 @@
 			<div class="container-account">
 				<aside>
 					<div class="profile-card">
-						<img src="../images/barbie.png" alt="Profilul" />
+						<img src="../images/barbie.png" alt="profile picture" />
 						<a href="#" class="change-picture">Change picture</a>
-						<h3>Barbie</h3>
-						<p>Role: User</p>
-						<p>Cod ID: 1234567890</p>
+						<h3 id="displayed-name"></h3>
+						<p>Email: <p id="displayed-email"></p></p>
 						<a href="../index.html" class="logout-button">Logout</a>
 					</div>
 				</aside>
 				<main>
 					<div class="menu-settings">
-						<a
-							href="./account.html"
-							class="menu-button-settings"
+						<a href="./account.html" class="menu-button-settings"
 							>Account details</a
 						>
 						<a
@@ -49,46 +47,48 @@
 						>
 					</div>
 					<section class="account-settings">
-						<form>
-							<label for="first-name">Prenume</label>
+						<form id="update-account-form">
+							<label for="first-name">First Name</label>
 							<input
 								type="text"
 								id="first-name"
 								name="first-name"
-								value="Ana"
+								placeholder="Ana"
 							/>
 
-							<label for="last-name">Nume</label>
+							<label for="last-name">Last Name</label>
 							<input
 								type="text"
 								id="last-name"
 								name="last-name"
-								value="Popescu"
+								placeholder="Popescu"
 							/>
 
-							<label for="phone-number">Număr de Telefon</label>
+							<label for="phone-number">Phone Number</label>
 							<input
 								type="tel"
 								id="phone-number"
 								name="phone-number"
-								value="+40 123 456 789"
+								placeholder="+40 123 456 789"
 							/>
 
-							<label for="email-address">Adresă Email</label>
+							<label for="email-address">E-mail Address</label>
 							<input
 								type="email"
 								id="email-address"
 								name="email-address"
 								value="exemplu@gmail.com"
+								disabled
 							/>
 
-							<label for="password">Parolă</label>
-							<input
-								type="password"
-								id="password"
-								name="password"
-								value="**************"
-							/>
+							<div>
+								<span class="submit-error" id="update-error"
+									>Update failed</span
+								>
+								<button type="submit" class="button-form">
+									Update account
+								</button>
+							</div>
 						</form>
 					</section>
 				</main>

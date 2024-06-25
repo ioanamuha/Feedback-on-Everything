@@ -1,97 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Create Form</title>
+		<link rel="stylesheet" href="./createForm.css" />
+		<link rel="stylesheet" href="../css/navbar.css" />
+		<link rel="stylesheet" href="../css/footer.css" />
+		<script src="./createForm.js" type="module" defer></script>
+	</head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Create Form</title>
-	<link rel="stylesheet" href="./createForm.css" />
-	<link rel="stylesheet" href="../css/navbar.css" />
-	<link rel="stylesheet" href="../css/footer.css" />
-	<script src="./createForm.js" defer></script>
-</head>
+	<body>
+		<nav class="navbar">
+			<div class="navbar-logo-container">
+				<a href="../aboutPage/about.html">
+					<img
+						src="../images/logo.png"
+						alt="logo"
+						class="navbar-logo"
+					/>
+				</a>
+			</div>
+			<input id="menu-toggle" type="checkbox" />
+			<label class="menu-burger-container" for="menu-toggle">
+				<div class="menu-button"></div>
+			</label>
+			<ul class="menu">
+				<li><a href="../mainPage/main.html">Home</a></li>
+				<li><a href="../aboutPage/about.html">About Us</a></li>
+				<li><a href="../accountPage/account.html">Account</a></li>
+			</ul>
+		</nav>
 
-<body>
-	<nav class="navbar">
-		<div class="navbar-logo-container">
-			<img src="../images/logo.png" alt="logo" class="navbar-logo" />
-		</div>
-		<input id="menu-toggle" type="checkbox" />
-		<label class="menu-burger-container" for="menu-toggle">
-			<div class="menu-button"></div>
-		</label>
-		<ul class="menu">
-			<li><a href="../mainPage/main.html">Home</a></li>
-			<li><a href="../aboutPage/about.html">About Us</a></li>
-			<li><a href="../accountPage/account.html">Account</a></li>
-		</ul>
-	</nav>
+		<div class="container">
+			<main>
+				<section class="account-settings">
+					<form id="form-builder">
+						<div class="form-group form-group-row">
+							<label for="anonym"
+								>Do you want to post it anonymous?</label
+							>
+							<input type="checkbox" id="anonym" name="anonym" />
+						</div>
 
-	<div class="container">
-		<main>
-			<section class="account-settings">
-				<form id="form-builder">
-					<div class="form-group form-group-row">
-						<label for="anonym">Do you want to post it anonymous?</label>
-						<input type="checkbox" id="anonym" name="anonym" onclick="toggleAnonym()" />
-					</div>
+						<label for="first-name">First Name</label>
+						<input
+							type="text"
+							id="first-name"
+							name="first-name"
+							value="Ana"
+						/>
 
-					<label for="first-name">First Name</label>
-					<input type="text" id="first-name" name="first-name" value="Ana" />
+						<label for="last-name">Last Name</label>
+						<input
+							type="text"
+							id="last-name"
+							name="last-name"
+							value="Popescu"
+						/>
 
-					<label for="last-name">Last Name</label>
-					<input type="text" id="last-name" name="last-name" value="Popescu" />
+						<label for="title">Title</label>
+						<input type="text" id="form-title" name="form-title" />
 
-					<label for="title">Title</label>
-					<input type="text" id="form-title" name="form-title" />
-
-					<label for="form-description">Description</label>
-					<textarea rows="10" id="form-description" name="form-description" class="input-description"
-						placeholder="Description">
+						<label for="form-description">Description</label>
+						<textarea
+							rows="10"
+							id="form-description"
+							name="form-description"
+							class="input-description"
+							placeholder="Description"
+						>
 						</textarea>
-					<label for="form-month">Time period</label>
-					<input type="month" id="form-month" name="form-month" />
-					<label for="form-category">Select category</label>
-					<select id="form-category" name="form-category" class="form-category">
-						<option value="All categories">
-							All categories
-						</option>
-						<option value="Movies/TV Shows">Movies/TV Shows</option>
-						<option value="Books">Books</option>
-						<option value="Music">Music</option>
-						<option value="Games">Games</option>
-						<option value="Food">Food</option>
-						<option value="Travel">Travel</option>
 
-					</select>
-					<label for="form-photo">Add Photo</label>
-					<input type="file" id="form-photo" name="form-photo" />
-					<div>
-						<button type="submit" class="create-form-button">
-							<a href="../mainPage/main.html">Submit</a>
-						</button>
+						<label for="form-category">Select category</label>
+						<select
+							id="form-category"
+							name="form-category"
+							class="form-category"
+						>
+							<option value="All categories">
+								All categories
+							</option>
+							<option value="Movies/TV Shows">
+								Movies/TV Shows
+							</option>
+							<option value="Books">Books</option>
+							<option value="Music">Music</option>
+							<option value="Games">Games</option>
+							<option value="Food">Food</option>
+							<option value="Travel">Travel</option>
+						</select>
+
+						<label for="form-photo">Add Photo</label>
+						<input type="file" id="form-photo" name="form-photo" />
+
+						<div>
+							<span class="submit-error" id="create-error"
+								>Failed to create a new feedback form</span
+							>
+							<button type="submit" class="create-form-button">
+								Submit
+							</button>
+						</div>
+					</form>
+				</section>
+			</main>
+		</div>
+
+		<footer class="site-footer">
+			<div class="footer-container">
+				<div class="footer-contact-info">
+					<h3>Contact Us</h3>
+					<div class="contact-method">
+						<p>+123-456-7890</p>
 					</div>
-				</form>
-			</section>
-		</main>
-	</div>
-
-	<footer class="site-footer">
-		<div class="footer-container">
-			<div class="footer-contact-info">
-				<h3>Contact Us</h3>
-				<div class="contact-method">
-					<p>+123-456-7890</p>
-				</div>
-				<div class="contact-method">
-					<p>hello@reallygreatsite.com</p>
-				</div>
-				<div class="contact-method">
-					<p>123 Anywhere ST., Any City, 12345</p>
+					<div class="contact-method">
+						<p>hello@reallygreatsite.com</p>
+					</div>
+					<div class="contact-method">
+						<p>123 Anywhere ST., Any City, 12345</p>
+					</div>
 				</div>
 			</div>
-		</div>
-	</footer>
-</body>
-
+		</footer>
+	</body>
 </html>

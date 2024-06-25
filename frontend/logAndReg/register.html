@@ -5,20 +5,27 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Register</title>
 		<link rel="stylesheet" href="./logAndReg.css" />
+		<script src="./register.js" type="module" defer></script>
 	</head>
 	<body>
 		<nav class="navbar">
 			<div class="navbar-logo-container">
-				<img src="../images/logo.png" alt="logo" class="navbar-logo" />
+				<a href="../aboutPageNotLogged/about.html">
+					<img
+						src="../images/logo.png"
+						alt="logo"
+						class="navbar-logo"
+					/>
+				</a>
 			</div>
 
 			<ul class="menu">
-				<li><a href="../aboutPage/about.html">About Us</a></li>
+				<li><a href="../aboutPageNotLogged/about.html">About Us</a></li>
 			</ul>
 		</nav>
 		<div class="container">
 			<div class="login-container">
-				<form id="login-form" class="login-form">
+				<form id="register-form" class="login-form">
 					<h2>Register</h2>
 					<div class="form-group">
 						<label for="firstName"> First Name:</label>
@@ -67,25 +74,32 @@
 						<label for="password">Confirm password:</label>
 						<input
 							type="password"
-							id="password"
-							name="password"
+							id="confirm-password"
+							name="confirm-password"
 							required
 						/>
 					</div>
-					<div class="button-div">
-						<a href="../mainPage/main.html" class="button-form"
-							>Register</a
+					<div class="form-button-container">
+						<span class="submit-error" id="register-error"
+							>Register failed</span
 						>
+						<span class="submit-error" id="password-error"
+							>Passwords must match</span
+						>
+						<span class="submit-error" id="input-fields-error"
+							>Input fields error</span
+						>
+						<button type="submit" class="button-form">
+							Register
+						</button>
 					</div>
 					<p>
-						Already have an account? <a href="../index.html">Login</a>
+						Already have an account?
+						<a href="../index.html">Login</a>
 					</p>
 				</form>
 			</div>
 			<div class="logo-container">
-				<!-- You can put your logo here -->
-				<!-- For now, let's use a placeholder text -->
-
 				<img src="../images/logo.png" alt="Logo" class="brand-logo" />
 			</div>
 		</div>

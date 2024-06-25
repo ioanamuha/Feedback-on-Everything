@@ -167,15 +167,21 @@ input[type="checkbox"] {
 	margin-right: 5px;
 }
 
-.button-div {
+.form-button-container {
 	width: 100%;
 	color: var(--zaffre);
 	border: none;
 	display: flex;
-	align-items: flex-start;
-	border-radius: 4px;
-	cursor: pointer;
+	flex-direction: column;
 }
+
+.submit-error {
+	color: red;
+	font-size: 12;
+	margin-bottom: 5px;
+	display: none;
+}
+
 .button-form {
 	width: 100%;
 	padding: 10px;
