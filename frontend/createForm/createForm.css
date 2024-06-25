@@ -93,9 +93,8 @@ input[type="month"],
 
 .form-category {
 	width: auto;
-	overflow-y:scroll;
+	overflow-y: scroll;
 	max-height: 50px;
-
 }
 
 input[type="file"] {
@@ -125,7 +124,7 @@ input[type="file"] {
 	margin: 20px;
 }
 
-.create-form-button>a {
+.create-form-button > a {
 	text-decoration: none;
 	color: var(--honeydew);
 }
@@ -143,10 +142,16 @@ input[type="file"] {
 	gap: 3rem;
 }
 
+.submit-error {
+	color: red;
+	font-size: 12;
+	margin-bottom: 5px;
+	display: none;
+}
+
 /* CREATE FORM - END */
 
 @media screen and (max-width: 1024px) {
-
 	.card-container,
 	.content-container {
 		max-width: 1024px;
