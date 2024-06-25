@@ -1,0 +1,17 @@
+{
+	"name": "espresso",
+	"version": "1.0.0",
+	"description": "Our implementation of a light version of express, called espresso",
+	"main": "index.js",
+	"keywords": [
+		"express",
+		"tw",
+		"uaic",
+		"tehnologii-web"
+	],
+	"author": "Ioana Muha, Corina Samson",
+	"license": "ISC",
+	"dependencies": {
+		"path-to-regexp": "^6.2.2"
+	}
+}
