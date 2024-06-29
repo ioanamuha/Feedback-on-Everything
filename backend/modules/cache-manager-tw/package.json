@@ -1,0 +1,15 @@
+{
+	"name": "cache-manager",
+	"version": "1.0.0",
+	"description": "Our implementation of a cache manager, with support just for in memory save",
+	"main": "index.js",
+	"keywords": [
+		"cache-manager",
+		"tw",
+		"uaic",
+		"tehnologii-web",
+		"in-memory-save"
+	],
+	"author": "Ioana Muha, Corina Samson",
+	"license": "ISC"
+}

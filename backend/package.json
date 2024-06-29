@@ -1,15 +1,29 @@
 {
-  "name": "tw-project-backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "nodemon index.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^3.1.3"
-  }
+	"name": "tw-project-backend",
+	"version": "1.0.0",
+	"description": "Backend for TW project",
+	"main": "index.js",
+	"scripts": {
+		"dev": "nodemon index.js"
+	},
+	"keywords": [
+		"tw",
+		"uaic",
+		"feedback",
+		"plutchik",
+		"espresso",
+		"cache-manager"
+	],
+	"author": "Ioana Muha, Corina Samson",
+	"license": "ISC",
+	"dependencies": {
+		"cache-manager-tw": "file:modules/cache-manager-tw",
+		"dotenv": "^16.4.5",
+		"espresso": "file:modules/espresso",
+		"jsonwebtoken": "^9.0.2",
+		"mongoose": "^8.4.3"
+	},
+	"devDependencies": {
+		"nodemon": "^3.1.3"
+	}
 }
