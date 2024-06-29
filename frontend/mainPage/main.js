@@ -96,7 +96,7 @@ async function initPage() {
 		formDetails.appendChild(feedbackButton);
 
 		const a = document.createElement("a");
-		a.href = "../giveFeedback/giveFeedback.html";
+		a.href = "../giveFeedback/giveFeedback.html?form-id=" + form.id;
 		a.textContent = "POST FEEDBACK...";
 		feedbackButton.appendChild(a);
 

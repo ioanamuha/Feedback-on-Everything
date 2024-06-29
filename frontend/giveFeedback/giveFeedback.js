@@ -19,46 +19,57 @@ function toggleAnonym() {
 }
 
 async function submitFeedback(event) {
-	document.getElementById("submit-error").style.display = "none";
+    // document.getElementById("submit-error").style.display = "none";
 
-	const data = new FormData(event.target);
-	const feedbackText = data.get("feedback-text") || "";
-	const isAnonymous = data.get("anonym") || false;
+    const data = new FormData(event.target);
+    const feedbackText = data.get("feedback-text") || "";
+    const isAnonymous = data.get("anonym") || false;
 
-	if (!selectedEmotion || !feedbackText) {
-		document.getElementById("submit-error").style.display = "block";
-		return;
-	}
+    // if (!selectedEmotion || !feedbackText) {
+    //     document.getElementById("submit-error").style.display = "block";
+    //     return;
+    // }
 
-	const formId = localStorage.getItem("currentFormId");
-	const authToken = JSON.parse(localStorage.getItem("user")).token;
+    const formId = localStorage.getItem("currentFormId");
+    const authToken = JSON.parse(localStorage.getItem("user")).token;
 
-	const submitBody = {
-		formId: formId,
-		emotion: selectedEmotion,
-		feedback: feedbackText,
-		anonymous: isAnonymous
-	};
+    const submitBody = {
+        formId: formId,
+        emotion: selectedEmotion,
+        feedback: feedbackText,
+        anonymous: isAnonymous
+    };
 
-	const response = await fetch(API_SUBMIT_FEEDBACK, {
-		method: "POST",
-		body: JSON.stringify(submitBody),
-		headers: {
-			authorization: "Bearer " + authToken,
-			"Content-Type": "application/json",
-		},
-	});
+    console.log("Submitting feedback:", submitBody);
 
-	if (response.status !== 201) {
-		document.getElementById("submit-error").style.display = "block";
-		return;
-	}
+    try {
+        const response = await fetch(API_SUBMIT_FEEDBACK, {
+            method: "POST",
+            body: JSON.stringify(submitBody),
+            headers: {
+                authorization: "Bearer " + authToken,
+                "Content-Type": "application/json",
+            },
+        });
 
-	redirectToMainPage();
+        if (response.status !== 201) {
+            // document.getElementById("submit-error").style.display = "block";
+            console.error("Failed to submit feedback. Status:", response.status);
+            return;
+        }
+
+        console.log("Feedback submitted successfully");
+        // Instead of redirecting, show a success message
+        redirectToMainPage();
+    } catch (error) {
+        console.error("Error submitting feedback:", error);
+        // document.getElementById("submit-error").style.display = "block";
+    }
 }
 
 async function loadFormData() {
-	const formId = new URLSearchParams(window.location.search).get('formId');
+    const urlParams = new URLSearchParams(window.location.search);
+    const formId = urlParams.get('form-id');
 	if (!formId) {
 		console.error("No form ID provided");
 		return;
@@ -78,13 +89,14 @@ async function loadFormData() {
 		return;
 	}
 
-	const formData = await response.json();
+	const formData = (await response.json()).form;
+    console.log(formData);
 	document.getElementById("form-description").textContent = formData.description;
-	document.getElementById("user-info").textContent = formData.anonymous ? "by Anonymous User" : `by ${formData.firstName} ${formData.lastName}`;
+	document.getElementById("user-info").textContent = formData.anonymous ? "by Anonymous User" : `by ${formData.firstName ?? ''} ${formData?.lastName ?? ''}`;
 }
 
 async function initPage() {
-	document.getElementById("submit-error").style.display = "none";
+	// document.getElementById("submit-error").style.display = "none";
 	const savedCurrentUser = localStorage.getItem("user");
 	if (!savedCurrentUser) {
 		window.location.href = "../index.html";
@@ -93,7 +105,7 @@ async function initPage() {
 
 	await loadFormData();
 
-	const form = document.getElementById("feedback-form");
+	const form = document.getElementById("form-builder");
 	form.addEventListener("submit", (event) => {
 		event.preventDefault();
 		submitFeedback(event);

@@ -1,5 +1,6 @@
-const { FormModel, UserFormsModel } = require("../database/models");
+const { FormModel, FeedbackModel, UserFormsModel } = require("../database/models");
 const { AuthMiddleware } = require("../middlewares");
+const { PLUTCHIK_EMOTIONS } = require("../utils/plutchick");
 
 const router = require("espresso").Router();
 
@@ -59,6 +60,41 @@ router.post("/form/create", async (req, res) => {
 	});
 });
 
+router.get("/form/:formId", async (req, res) => {
+    const formId = req.params.formId;
+
+    try {
+        const form = await FormModel.findById(formId);
+
+        if (!form) {
+            return res.status(404).json({
+                statusCode: 404,
+                message: "Form not found",
+            });
+        }
+
+        res.status(200).json({
+            statusCode: 200,
+            message: "Form found",
+            form: {
+                id: form._id,
+                title: form.title,
+                description: form.description,
+                anonymous: form.anonymous,
+                firstName: form.firstName,
+                lastName: form.lastName,
+                category: form.category
+            }
+        });
+    } catch (error) {
+        console.error("Error fetching form:", error);
+        res.status(500).json({
+            statusCode: 500,
+            message: "Error fetching form",
+        });
+    }
+});
+
 router.get("/form/available-forms/:currentUser", async (req, res) => {
 	const currentUser = req.params?.currentUser;
 	if (!currentUser) {
@@ -82,6 +118,7 @@ router.get("/form/available-forms/:currentUser", async (req, res) => {
 
 		if (savedForm) {
 			availableForms.push({
+				id: savedForm._id.toString() || "",
 				image: savedForm.photo || "",
 				title: savedForm.title || "",
 				anonymous: savedForm.anonymous,
@@ -107,6 +144,7 @@ router.get("/form/available-forms/:currentUser", async (req, res) => {
 		forms: availableForms,
 	});
 });
+
 router.post("/form/submit-feedback", async (req, res) => {
 	const { formId, emotion, feedback } = req.body;
   
@@ -133,7 +171,7 @@ router.post("/form/submit-feedback", async (req, res) => {
 		});
 	  }
   
-	  const newResponse = new FormResponseModel({
+	  const newResponse = new FeedbackModel({
 		formId,
 		emotion,
 		feedback
