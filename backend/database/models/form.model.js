@@ -29,6 +29,10 @@ const formSchema = new Schema({
 		type: String,
 		required: false,
 	},
+	// emotion: {
+	// 	type: String,
+	// 	required: false, 
+	//   },
 });
 
 module.exports = model("forms", formSchema);
