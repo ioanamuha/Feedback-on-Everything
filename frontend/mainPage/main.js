@@ -1,8 +1,7 @@
 function scroll(direction) {
 	const container = document.querySelector(".card-wrapper");
-	const scrollAmount = window.innerWidth / 4; // Scrolls a quarter of the window width
+	const scrollAmount = window.innerWidth / 4; 
 
-	// Use scrollBy for a smooth transition
 	container.scrollBy({
 		top: 0,
 		left: direction * scrollAmount,
@@ -11,27 +10,31 @@ function scroll(direction) {
 }
 function scrollValidation(direction) {
 	const wrapper = document.querySelector(".validation-card-wrapper");
-	const cardWidth = wrapper.querySelector(".validation-card").offsetWidth; // Get the width of a card
+	const cardWidth = wrapper.querySelector(".validation-card").offsetWidth; 
 
 	wrapper.scrollBy({
 		top: 0,
-		left: direction * cardWidth, // Scroll by the width of one card
+		left: direction * cardWidth, 
 		behavior: "smooth",
 	});
 }
 
 function Left() {
 	var wrapper = document.querySelector(".validation-card-wrapper");
-	wrapper.scrollBy({ left: -300, behavior: "smooth" }); // Adjust the value as necessary for your layout
+	wrapper.scrollBy({ left: -300, behavior: "smooth" }); 
 }
 
 function scrollRight() {
 	var wrapper = document.querySelector(".validation-card-wrapper");
-	wrapper.scrollBy({ left: 300, behavior: "smooth" }); // Adjust the value as necessary for your layout
+	wrapper.scrollBy({ left: 300, behavior: "smooth" }); 
 }
 
 const API_RETRIEVE_AVAILABLE_FORMS =
-	"http://127.0.0.1:3000/api/v1/form/available-forms/";
+	"http://127.0.0.1:3000/api/v1/forms/all";
+
+function goToCreateForm() {
+	window.location.href = "../createForm/createForm.html";
+}
 
 async function initPage() {
 	const savedCurrentUser = localStorage.getItem("user");
@@ -40,11 +43,10 @@ async function initPage() {
 		return;
 	}
 
-	const currentUserEmail = JSON.parse(savedCurrentUser).email;
 	const authToken = JSON.parse(savedCurrentUser).token;
 
 	const response = await fetch(
-		API_RETRIEVE_AVAILABLE_FORMS + currentUserEmail,
+		API_RETRIEVE_AVAILABLE_FORMS,
 		{
 			headers: {
 				authorization: "Bearer " + authToken,
@@ -78,7 +80,6 @@ async function initPage() {
 		h3.textContent = form.title;
 		formDetails.appendChild(h3);
 
-		console.log(form.anonymous);
 		const userInfo = document.createElement("p");
 		userInfo.className = "user-info";
 		userInfo.textContent = form.anonymous
@@ -96,7 +97,7 @@ async function initPage() {
 		formDetails.appendChild(feedbackButton);
 
 		const a = document.createElement("a");
-		a.href = "../giveFeedback/giveFeedback.html";
+		a.href = "../giveFeedback/giveFeedback.html?form-id=" + form.id;
 		a.textContent = "POST FEEDBACK...";
 		feedbackButton.appendChild(a);
 

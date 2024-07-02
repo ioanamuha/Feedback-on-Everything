@@ -230,13 +230,45 @@ main {
 
 }
 
+.text-responses {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#text-responses {
+    list-style-type: none;
+    padding: 0;
+}
+
+#text-responses li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+#emotions-chart {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+#form-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
 .card-wrapper {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
 }
-
 
 .stats {
 	display: flex;
@@ -297,7 +329,6 @@ hr {
 .plutchik-diagram,
 .responses-diagram {
 	display: flex;
-	/* flex-wrap: wrap; */
 	flex-direction: column;
 	align-items: center;
 	max-width: calc(100% - 15px);
@@ -306,6 +337,41 @@ hr {
 	min-width: 50%;
 }
 
+.report-actions {
+    margin-top: 20px;
+    display: flex;
+	flex-direction: column;
+    justify-content: center;
+	gap: 10px;
+    align-items: center;
+}
+
+.export-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.button-form {
+    padding: 10px 15px;
+    background-color: var(--columbia-blue);
+    color: var(--zaffre);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-form:hover {
+    background-color: var(--zaffre);
+    color: var(--columbia-blue);
+}
+
+#importResult {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
 
 .site-footer {
 	flex-shrink: 0;
