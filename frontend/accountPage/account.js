@@ -74,6 +74,13 @@ async function initPage() {
 	).innerText = `${resData.user.firstName} ${resData.user.lastName}`;
 	document.getElementById("displayed-email").innerText = resData.user.email;
 
+	const logoutButton = document.getElementById("logout-button");
+	logoutButton.addEventListener("click", () => {
+		localStorage.removeItem("user");
+		localStorage.removeItem("remember-user-login");
+		window.location.href = "../index.html";
+	});
+
 	const form = document.getElementById("update-account-form");
 	form.addEventListener("submit", (event) => {
 		event.preventDefault();

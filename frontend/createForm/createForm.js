@@ -6,15 +6,17 @@ function redirectToMainPage() {
 }
 
 async function create(event) {
+	event.preventDefault();
 	document.getElementById("create-error").style.display = "none";
 
 	const data = new FormData(event.target);
-	const isAnonymous = data.get("anonym") || false;
+	const isAnonymous = data.get("anonym") ? true : false;
 	const firstName = !isAnonymous ? data.get("first-name") : "";
 	const lastName = !isAnonymous ? data.get("last-name") : "";
 	const title = data.get("form-title") || "";
-	const description = data.get("form-description") || "";
+	const description = data.get("form-description").trim() || "";
 	const category = data.get("form-category") || "";
+	const formPhoto = data.get("form-photo") || undefined;
 
 	if (
 		!title ||
@@ -35,7 +37,7 @@ async function create(event) {
 		description: description,
 		category: category,
 		anonymous: isAnonymous,
-		firstname: firstName,
+		firstName: firstName,
 		lastName: lastName,
 	};
 
